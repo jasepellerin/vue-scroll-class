@@ -1,10 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  entry: './source/scripts/index.js',
+  entry: './source/scripts',
   output: {
-    path: path.resolve(__dirname, 'temp/scripts'),
-    filename: 'bundle.js',
+    library: 'VueScrollClass',
+    libraryTarget: 'umd',
+    filename: 'vue-scroll-class.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [

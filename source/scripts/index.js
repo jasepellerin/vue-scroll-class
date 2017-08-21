@@ -8,7 +8,7 @@ const handleScroll = (el, scrollHeight = 100,
   }
 };
 
-export default {
+const VueScrollClass = {
   bind: (el, binding) => {
     window.addEventListener('scroll', () => {
       handleScroll(el, binding.value, binding.arg);
@@ -20,3 +20,5 @@ export default {
     });
   },
 };
+
+export default VueScrollClass;
