@@ -17,7 +17,7 @@ import VueScrollClass from 'vue-scroll-class';
 Register to Vue globally:
 
 ```javascript
-Vue.directives('scroll-class': VueScrollClass)
+Vue.directives('scroll-class': VueScrollClass);
 ```
 
 Register to a specific Vue instance:
@@ -42,5 +42,5 @@ vue-scroll-class defaults to adding the class 'sticky' to the attached element a
 To override these defaults, add a class name or a different number of pixels in the appropriate place:
 
 ```html
-<div v-scroll-class:differentClass=645>I'll get the class 'differentClass' after 645px!>/div>
+<div v-scroll-class:differentClass=645>I'll get the class 'differentClass' after 645px!></div>
 ```
