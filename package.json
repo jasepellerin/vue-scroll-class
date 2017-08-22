@@ -1,8 +1,8 @@
 {
   "name": "vue-scroll-class",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Vue directive to easily add and remove a class from an element when the screen is scrolled past a given point",
-  "main": ".dist/vue-scroll-class.js",
+  "main": "dist/vue-scroll-class.js",
   "keywords": [
     "vue-directive",
     "sticky",
@@ -26,7 +26,6 @@
     "eslint-plugin-import": "^2.3.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-uglify": "^3.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-webpack": "^3.0.0",
     "webpack": "^2.6.1"
