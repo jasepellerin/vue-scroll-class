@@ -21,4 +21,4 @@ const VueScrollClass = {
   },
 };
 
-export default VueScrollClass;
+module.exports = VueScrollClass;

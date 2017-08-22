@@ -2,6 +2,7 @@
   "name": "vue-scroll-class",
   "version": "1.0.8",
   "description": "A Vue directive to easily add and remove a class from an element when the screen is scrolled past a given point",
+  "files": ["source", "dist"],
   "main": "dist/vue-scroll-class.js",
   "keywords": [
     "vue-directive",
@@ -14,8 +15,14 @@
     "type": "git",
     "url": "https://github.com/jasepellerin/vue-scroll-class"
   },
+  "scripts": {
+    "prepublish": "webpack -p"
+  },
   "author": "Jase Pellerin <jasepellerin@gmail.com> (http://jasepellerin.com)",
   "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",

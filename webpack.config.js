@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './source/scripts',
+  entry: './source',
   output: {
     library: 'VueScrollClass',
     libraryTarget: 'umd',
