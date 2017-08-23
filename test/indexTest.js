@@ -18,7 +18,6 @@ describe('vue-scroll-class', () => {
       },
     }).$mount();
     expect(vm.$el.firstChild.getAttribute('test') === 'ok');
-    console.log(vm.$el.firstChild.innerHTML);
     window.scrollY = 1000;
   });
 });
