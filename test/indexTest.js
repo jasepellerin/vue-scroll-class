@@ -26,7 +26,7 @@ describe('vue-scroll-class', () => {
       }).$mount('#app')
 
       // Set body height to allow scrolling
-      document.body.style.height = '10000px'
+      document.body.style.height = '100px'
     })
 
     afterEach(() => {
@@ -48,8 +48,9 @@ describe('vue-scroll-class', () => {
       console.log('Window height: ' + window.innerHeight)
       expect(window.pageYOffset).to.be(0)
       window.scrollTo(0, 100)
+      document.body.scrollTop = 100
       window.setTimeout(() => {
-        console.log(window.pageYOffset)
+        console.log(document.body.scrollTop)
         expect(window.pageYOffset).to.be(100)
         expect(document.getElementById('app')
           .classList.contains(defaultClass)).to.be(true)
