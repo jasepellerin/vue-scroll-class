@@ -8,9 +8,10 @@
  */
 const handleScroll = (el, scrollHeight = 100,
   classToAdd = 'sticky') => {
-  if (window.scrollY >= scrollHeight && !el.classList.contains(classToAdd)) {
+  if (window.pageYOffset >= scrollHeight &&
+    !el.classList.contains(classToAdd)) {
     el.classList.add(classToAdd);
-  } else if (window.scrollY < scrollHeight &&
+  } else if (window.pageYOffset < scrollHeight &&
     el.classList.contains(classToAdd)) {
     el.classList.remove(classToAdd);
   }
