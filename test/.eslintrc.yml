@@ -10,6 +10,8 @@ env:
 rules: 
   max-len: [1, 80, 2]
   import/no-extraneous-dependencies: [error, { devDependencies: true }]
+  no-console: ["warn"]
+  no-alert: ["warn"]
 parserOptions:
   ecmaVersion: 2017
   sourceType: "module"
