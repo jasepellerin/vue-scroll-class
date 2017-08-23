@@ -1,5 +1,4 @@
 /* eslint no-undef: "off" */
-let classAdded = false;
 
 /* Handles page scrolling and applies class as necessary
  * @param {Element} el - The element attached to the directive
@@ -9,12 +8,11 @@ let classAdded = false;
  */
 const handleScroll = (el, scrollHeight = 100,
   classToAdd = 'sticky') => {
-  if (window.scrollY >= scrollHeight && !classAdded) {
+  if (window.scrollY >= scrollHeight && !el.classList.contains(classToAdd)) {
     el.classList.add(classToAdd);
-    classAdded = true;
-  } else if (window.scrollY < scrollHeight && classAdded) {
+  } else if (window.scrollY < scrollHeight &&
+    el.classList.contains(classToAdd)) {
     el.classList.remove(classToAdd);
-    classAdded = false;
   }
 };
 
