@@ -17,19 +17,46 @@ const handleScroll = (el, scrollHeight = 100,
   }
 }
 
+/* Throttle function from https://www.sitepoint.com/throttle-scroll-events/
+ * Takes a function and wait time and returns a time-throttled version
+ * @param {Function} fn - The function to throttle
+ * @param {num} waitMs - Minimum time in millis to wait between function calls
+ */
+const throttle = (fn, waitMs) => {
+  var time = Date.now()
+  return function () {
+    if ((time + waitMs - Date.now()) < 0) {
+      fn()
+      time = Date.now()
+    }
+  }
+}
+
 /* Adds event listener to the window based on scroll
  * When page is scrolled, call handlescroll with given arguments
  */
 const VueScrollClass = {
   bind: (el, binding) => {
-    window.addEventListener('scroll', () => {
+    // Attach throttled listening function to the element
+    el.listener = throttle(() => {
       handleScroll(el, binding.value, binding.arg)
-    })
+    }, 100)
+    window.addEventListener('scroll', el.listener)
   },
-  unbind: (el, binding) => {
-    window.removeEventListener('scroll', () => {
+  update: (el, binding) => {
+    // If the element has been updated, rebind and handle scroll
+    if (binding.oldValue !== binding.value) {
+      VueScrollClass.unbind(el)
+      VueScrollClass.bind(el, binding)
       handleScroll(el, binding.value, binding.arg)
-    })
+    }
+  },
+  unbind: (el) => {
+    // If the element has a listener, remove it
+    if (el.listener) {
+      window.removeEventListener('scroll', el.listener)
+      el.listener = undefined
+    }
   }
 }
 
