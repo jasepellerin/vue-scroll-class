@@ -10,12 +10,12 @@ const handleScroll = (el, scrollHeight = 100,
   classToAdd = 'sticky') => {
   if (window.pageYOffset >= scrollHeight &&
     !el.classList.contains(classToAdd)) {
-    el.classList.add(classToAdd);
+    el.classList.add(classToAdd)
   } else if (window.pageYOffset < scrollHeight &&
     el.classList.contains(classToAdd)) {
-    el.classList.remove(classToAdd);
+    el.classList.remove(classToAdd)
   }
-};
+}
 
 /* Adds event listener to the window based on scroll
  * When page is scrolled, call handlescroll with given arguments
@@ -23,14 +23,14 @@ const handleScroll = (el, scrollHeight = 100,
 const VueScrollClass = {
   bind: (el, binding) => {
     window.addEventListener('scroll', () => {
-      handleScroll(el, binding.value, binding.arg);
-    });
+      handleScroll(el, binding.value, binding.arg)
+    })
   },
   unbind: (el, binding) => {
     window.removeEventListener('scroll', () => {
-      handleScroll(el, binding.value, binding.arg);
-    });
-  },
-};
+      handleScroll(el, binding.value, binding.arg)
+    })
+  }
+}
 
-module.exports = VueScrollClass;
+module.exports = VueScrollClass

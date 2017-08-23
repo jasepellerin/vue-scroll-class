@@ -1,23 +1,37 @@
-import Vue from 'vue/dist/vue';
-import expect from 'expect.js';
+import Vue from 'vue/dist/vue'
+import expect from 'expect.js'
+import Vsc from '../source/index'
 
 describe('vue-scroll-class', () => {
-  // Initiate variables for vue-scroll-class and the window object
-  let window;
+  const defaultClass = 'sticky'
+  //  const testClass = 'otherClass'
+  //  const defaultScrollDistance = 100
+  //  const testScrollDistance = 500
 
-  beforeEach(() => {
-    // Reset variables before each test
-    window = {};
-  });
+  describe('defaults', () => {
+    let vm
 
-  it('should add class sticky when scrolled 100px', () => {
-    const vm = new Vue({
-      template: '<div><span v-show="foo">hello</span></div>',
-      data: {
-        foo: true,
-      },
-    }).$mount();
-    expect(vm.$el.firstChild.getAttribute('test') === 'ok');
-    window.scrollY = 1000;
-  });
-});
+    beforeEach(() => {
+      vm = new Vue({
+        template: `<div style="{height: 1000px}">
+                  <span v-scroll-class>hello</span></div>`,
+        directives: {
+          'scroll-class': Vsc
+        }
+      }).$mount()
+    })
+
+    it('should not apply class before scrolling', () => {
+      expect(window.pageYOffset).to.be(0)
+      expect(vm.$el.firstChild.classList.contains(defaultClass)).to.be(false)
+    })
+
+    it('should apply class after scrolling default distance', () => {
+      console.log(window.innerHeight)
+      expect(window.pageYOffset).to.be(0)
+      window.scrollTo(0, 100)
+      expect(window.pageYOffset).to.be(100)
+      expect(vm.$el.firstChild.classList.contains(defaultClass)).to.be(true)
+    })
+  })
+})
