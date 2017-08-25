@@ -24,10 +24,16 @@ const handleScroll = (el, scrollHeight = 100,
  */
 const throttle = (fn, waitMs) => {
   var time = Date.now()
+  var timeout
   return function () {
     if ((time + waitMs - Date.now()) < 0) {
       fn()
       time = Date.now()
+    } else {
+      if (timeout) window.clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        fn()
+      }, waitMs)
     }
   }
 }
