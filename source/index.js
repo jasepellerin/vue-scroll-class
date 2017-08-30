@@ -50,12 +50,13 @@ const VueScrollClass = {
     window.addEventListener('scroll', el.listener)
   },
   update: (el, binding) => {
-    // If the element has been updated, rebind and handle scroll
+    // If the element has been changed, rebind
     if (binding.oldValue !== binding.value) {
       VueScrollClass.unbind(el)
       VueScrollClass.bind(el, binding)
-      handleScroll(el, binding.value, binding.arg)
     }
+    // Handle scroll regardless of binding change
+    handleScroll(el, binding.value, binding.arg)
   },
   unbind: (el) => {
     // If the element has a listener, remove it
